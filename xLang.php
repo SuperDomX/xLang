@@ -3,11 +3,11 @@
 * @author dev@domain.com
 * @name Language
 * @desc Change the Languauge on your Site.
-* @version v1(0.7)
+* @version v1(1.6)
 * @icon applications-education-language.png 
 * @mini language 
 * @link lang
-* @see radius
+* @see domain
 * @release false
 * @alpha true
 **/
@@ -26,6 +26,11 @@ class xLang extends Xengine {
 		$this->sdx = $sdx;
 	}
 
+	function index(){
+
+		return $r;
+	}
+
 	function autoRun($X){
 		// Language Defaults to English.  
 		
@@ -41,7 +46,6 @@ class xLang extends Xengine {
 		$c = 'config';
 		if( empty($lang[0][0]) ){
 		 	$lang = $q->Select("config_value",$c,array( "config_option" => 'lang_www')); 
-
 			if( empty($lang) ){
 				$lang = 'english';
 			}else{
@@ -57,13 +61,27 @@ class xLang extends Xengine {
 		 
 
 		// $this->dump($lang); 
-		if($_SERVER['REQUEST_URI'] != '/.json'){
-			// $X->dump($_SESSION);?
-			 
-			return array(
-				'_LANG' => $lang
-			); 
+		if($_SERVER['REQUEST_URI'] != '/.json'){ 
 
+			// Current Method
+			$a = 'X'.strtoupper($this->_SET['action']);
+			$m = $this->_SET['method']; 
+
+			if($a != 'XINDEX'){
+				$l = $lang[$a];
+
+				$m = $l['methods'][$m];
+
+				return array(
+					'L' => $lang[$a],
+					'lan' => array(
+						'class' => $l,
+						'method' => $m
+					),
+
+					'_LANG' => $lang
+				); 
+			}	
 		}
 
 		
@@ -102,20 +120,22 @@ class xLang extends Xengine {
 						$data =  trim(preg_replace('/\r?\n *\* */', ' ', $doc));
 						preg_match_all('/@([A-Za-z0-9]+)\s+(.*?)\s*(?=$|@[A-Za-z0-9]+\s)/s', $data, $matches);
 						$info = array_combine($matches[1], $matches[2]);
-						$ext                                    = explode('.',$file); 
-
-						$file = str_replace('.inc', '', str_replace('Lang', '', $file));
- 
+						$ext  = explode('.',$file); 
 						
+						// Replace string
+						// $file = str_replace('Lang', '', $file);
+						$file = preg_replace('/Lang/', '', $file, 1);
+						$file = str_replace('.inc', '', $file);						
 
 						if (class_exists($class)){
 							$class = new $class;  
 							$info = array_merge_recursive($info,$class->_LANG);
 						}
 
-
 						$files[strtoupper($file)] = $info;
-					}	
+					}	else{
+						$this->_comment("Could not load Language File ".$file);
+					}
 
 		            if(strtolower($ext[count($ext)-1]) === 'inc'){
 		            	

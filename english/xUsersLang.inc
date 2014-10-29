@@ -11,36 +11,36 @@
  * @DELETEBTN Remove<br/>Section
  * @blah
  */
-class xBloxLang {
+class xUsersLang {
 	// Used for Complex values.
 	var $_LANG = array(
-		'BLOX' => array(
+		'USERS' => array(
 			'cover' => array(
 				'name' => 'Coversheet',
 				'desc' => 'Every great Website deserves a professionally sexy coverpage',
 				'icon' => ''
 			),
 		),
-		'ICON' => 'fa-cubes',
+		'ICON' => 'fa-group',
 		'JUMBO' => array( 
-			'HEAD' => 'Play in the Toy Blox',
-			'QUOTE' => 'Jump right in! Become aquainted with the many different blocks to use to build your Kingdom.',
+			'HEAD' => 'Who\'s Online Anyway?',
+			'QUOTE' => 'A great Host makes sure their company is well kept.',
 			'BTN'	=> array( 
 				
 				'read'	=> array(
-					'a' => '<i class="fa fa-book"></i>  All Blox ',
+					'a' => '<i class="fa fa-book"></i>  Master List',
 					'class' => 'btn-info'
 				),
 				'create'	=> array(
-					'a' => '<i class="fa fa-cube"></i>  Create Blox ',
+					'a' => '<i class="fa fa-cube"></i>  Create User ',
 					'class' => 'btn-success'
 				),
 				'update'	=> array(
-					'a' => '<i class="fa fa-cubes"></i>  Edit Blox ',
+					'a' => '<i class="fa fa-cubes"></i>  Manage Roles ',
 					'class' => 'btn-primary'
 				),
 				'delete'	=> array(
-					'a' 	=> '<i class="fa fa-bomb"></i>   Delete',
+					'a' 	=> '<i class="fa fa-bomb"></i>   Delete/Ban User',
 					'class' => 'btn-danger'
 				),
 			)
@@ -59,7 +59,7 @@ class xBloxLang {
 			'ICON' => 'fa-book',
 			'JUMBO' => array( 
 				'HEAD' => 'Countless Numbers of Blox',
-				'QUOTE' => 'The Nexus is Home to a Millions of Blox built from and shared with the world.' 
+				'QUOTE' => 'The Nexus is Home to a Million Blox. Be sure to find your favorite ones.' 
 			)
 		),
 		'update'=> array(

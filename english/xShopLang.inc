@@ -6,7 +6,7 @@ class xShopLang {
 	var $_LANG = array(
 		'JUMBO' => array(
 			'HEAD' => 'Super Bazaar!',
-			'QUOTE' => '<b>Welcome</b>; to your Online Bazaar. Where you connect to the world to exchange Goods & Services.',
+			'QUOTE' => '<b>Welcome</b> to your Online Bazaar; Where you connect to the world to exchange Goods & Services.',
 			'BTN'	=> array(
 
 				'upload'	=> array(
